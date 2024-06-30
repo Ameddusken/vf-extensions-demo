@@ -144,7 +144,7 @@ export const MapExtension = {
     // Create the wrapper div
     const wrapper = document.createElement('div');
     wrapper.className = 'wrapper';
-    wrapper.style.width = "auto";
+    wrapper.style.width = "-webkit-fill-available";
 
     // Create the inner div
     const inner = document.createElement('div');
