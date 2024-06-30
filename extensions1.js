@@ -119,6 +119,18 @@ export const MapExtension = {
   match: ({ trace }) =>
     trace.type === 'plugin:tetris' || trace.payload.name === 'plugin:tetris',
   render: ({ trace, element }) => {
+    // Function to load CSS
+    const loadCSS = (href) => {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    };
+
+    // Load the necessary CSS files (replace with actual paths to your CSS files)
+    loadCSS('https://example.com/path/to/your/styles.css');
+    loadCSS('https://example.com/path/to/another/styles.css');
+
     // Create the wrapper div
     const wrapper = document.createElement('div');
     wrapper.className = 'wrapper';
@@ -226,6 +238,7 @@ export const MapExtension = {
     element.appendChild(wrapper);
   },
 };
+
 
 
 export const VideoExtension = {
