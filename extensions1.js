@@ -119,17 +119,26 @@ export const MapExtension = {
   match: ({ trace }) =>
     trace.type === 'plugin:tetris' || trace.payload.name === 'plugin:tetris',
   render: ({ trace, element }) => {
-    // Function to load CSS
-    const loadCSS = (href) => {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = href;
-      document.head.appendChild(link);
+    // Function to copy CSS from parent document
+    const copyCSS = () => {
+      const styles = Array.from(document.styleSheets);
+      styles.forEach(styleSheet => {
+        try {
+          if (styleSheet.cssRules) {
+            const style = document.createElement('style');
+            Array.from(styleSheet.cssRules).forEach(rule => {
+              style.appendChild(document.createTextNode(rule.cssText));
+            });
+            element.appendChild(style);
+          }
+        } catch (e) {
+          console.warn('Could not read stylesheet: ', styleSheet.href, e);
+        }
+      });
     };
 
-    // Load the necessary CSS files (replace with actual paths to your CSS files)
-    loadCSS('https://example.com/path/to/your/styles.css');
-    loadCSS('https://example.com/path/to/another/styles.css');
+    // Call the function to copy CSS
+    copyCSS();
 
     // Create the wrapper div
     const wrapper = document.createElement('div');
@@ -238,6 +247,7 @@ export const MapExtension = {
     element.appendChild(wrapper);
   },
 };
+
 
 
 
