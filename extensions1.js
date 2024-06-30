@@ -141,6 +141,11 @@ export const MapExtension = {
     copyCSS();
 
 
+     document.querySelectorAll('.vfrc-system-response--list.c-iTxaCK').forEach(element => {
+      element.style.width = '-webkit-fill-available';
+    });
+
+    
     // Create the wrapper div
     const wrapper = document.createElement('div');
     wrapper.className = 'wrapper';
