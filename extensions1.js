@@ -140,9 +140,11 @@ export const MapExtension = {
     // Call the function to copy CSS
     copyCSS();
 
+
     // Create the wrapper div
     const wrapper = document.createElement('div');
     wrapper.className = 'wrapper';
+    wrapper.style.width = "auto";
 
     // Create the inner div
     const inner = document.createElement('div');
@@ -156,6 +158,7 @@ export const MapExtension = {
     h1.id = 'text17';
     h1.className = 'style2';
     h1.textContent = 'Kontakt';
+    h1.style.color = "black";
 
     // Create the form element
     const form = document.createElement('form');
